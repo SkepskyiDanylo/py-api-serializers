@@ -58,6 +58,6 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         if self.action in ("retrieve", "list"):
-            return Movie.objects.all().select_related(
-                "cinema_hall").prefetch_related("movies")
-        return Movie.objects.all()
+            return MovieSession.objects.all().select_related(
+                "cinema_hall", "movie")
+        return MovieSession.objects.all()
