@@ -57,7 +57,7 @@ class MovieSerializer(serializers.ModelSerializer):
         )
 
 
-class MovieListSerializer(MovieSerializer):
+class MovieSerializerForSession(MovieSerializer):
     genres = serializers.SlugRelatedField(
         many=True,
         read_only=True,
@@ -110,4 +110,4 @@ class MovieSessionListSerializer(serializers.ModelSerializer):
 
 class MovieSessionRetrieveSerializer(MovieSessionSerializer):
     cinema_hall = CinemaHallSerializer(many=False)
-    movie = MovieListSerializer(many=False)
+    movie = MovieSerializerForSession(many=False)
